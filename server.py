@@ -1,13 +1,13 @@
 """ server.py: top level module for the Flask application """
 
-from Flask import Flask, render_template
+from flask import Flask, render_template
 app = Flask(__name__)
 
 @app.errorhandler(404)
 def page_not_found(err):
 	return 'Sorry, nothing here.', 404
 
-@errorhandler(500)
+@app.errorhandler(500)
 def application_error(err):
 	return 'Sorry, server error.', 500
 
