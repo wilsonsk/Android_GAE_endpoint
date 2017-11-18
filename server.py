@@ -3,6 +3,9 @@
 from flask import Flask, render_template
 from flask_restful import Resource, Api
 
+from Home import Home
+from Houses import Houses
+
 app = Flask(__name__)
 api = Api(app) 
 
@@ -19,23 +22,6 @@ def landing():
 	return 'Hello CS496'	
 
 """ REST API ROUTERS """
-class Houses(Resource):
-	def get(self):
-		return 'Hello GET houses'
-
-	def delete(self):
-		return 'Hello DELETE houses'
-
-class Home(Resource):
-	def get(self):
-		return 'Hello GET home'
-	
-	def put(self):
-		return 'Hello PUT home'
-
-	def delete(self):
-		return 'Hello DELETE home'
-	
 
 api.add_resource(Houses, '/houses')
 api.add_resource(Home, '/home')
