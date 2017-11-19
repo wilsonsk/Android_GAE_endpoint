@@ -2,22 +2,36 @@ from flask import request
 from flask_restful import Resource
 from google.appengine.ext import ndb
 
+import json
+from utils import jsonDumps, getObj
+
 from home import HomeModel
 
 class Home(Resource):
 	def get(self):
-		return HomeModel.query(ndb.GenericProperty("userId") == request.json["userId"]).get()
+		homes = HomeModel.query().fetch()
+		
+		home_dicts = {'Homes':[]}
+		for home in homes:
+			id = home.key.urlsafe()
+			home_data = home.to_dict()
+			home_data['self'] = '/homes/' + id 
+			home_data['id'] = id
+
+			home_dicts['Homes'].append(home_data)
+		
+		return jsonDumps(home_dicts)
 	
+
 	def post(self):
-		if(HomeModel.query(ndb.GenericProperty("userId") == request.json["userId"])):
-			newHome = HomeModel()
-			newHome.userId = request.json["userId"]
-			newHome.address = request.json["address"]
-			newHome.headline = request.json["headline"]
-			newHome.squareFeet = int(request.json["squareFeet"])
-			newHome.price = int(request.json["price"])
-			newHome.put()
-			return "Data was POSTed"
+		newHome = HomeModel()
+		newHome.userId = request.json["userId"]
+		newHome.address = request.json["address"]
+		newHome.headline = request.json["headline"]
+		newHome.squareFeet = int(request.json["squareFeet"])
+		newHome.price = int(request.json["price"])
+		newHome.put()
+		return "Data was POSTed"
 
 	def delete(self):
 		return 'Hello DELETE home'
