@@ -9,19 +9,16 @@ from home import HomeModel
 
 class Home(Resource):
 	def get(self):
-		homes = HomeModel.query().fetch()
-		
+		homes = HomeModel.query(HomeModel.userId == request.args.get("userId")).fetch()
 		home_dicts = {'Homes':[]}
 		for home in homes:
 			id = home.key.urlsafe()
 			home_data = home.to_dict()
 			home_data['self'] = '/homes/' + id 
 			home_data['id'] = id
-
 			home_dicts['Homes'].append(home_data)
-		
-		return jsonDumps(home_dicts)
-	
+
+		return json.dumps(home_dicts)	
 
 	def post(self):
 		newHome = HomeModel()
