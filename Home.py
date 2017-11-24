@@ -21,10 +21,14 @@ class Home(Resource):
 		return json.dumps(home_dicts)
 
 	def post(self):
-		home = request.args.get("id")
+		home = HomeModel.query(HomeModel.homeId == request.args.get("homeId")).fetch()
 		if home:				
-			
-			return home
+			home_dict = {'Home': []}
+			for home in home:
+				home_data = home.to_dict()
+				home_dict['Home'].append(home_data)	
+
+			return json.dumps(home_dict)
 		
 		else:
 			newHome = HomeModel()
