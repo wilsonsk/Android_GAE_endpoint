@@ -21,19 +21,14 @@ class Home(Resource):
 		return json.dumps(home_dicts)
 
 	def post(self):
-		key = request.args.get("entityKey")
-		if key:				
-			home = getObj(key)
-			if home:
-				id = home.key.urlsafe()
-				home_data = home.to_dict()
-				home_data['self'] = '/homes/' + id 
-				return json.dumps(home_data)
-			else:
-				self.response.write('home not existing')
+		home = request.args.get("id")
+		if home:				
+			
+			return home
 		
 		else:
 			newHome = HomeModel()
+			newHome.homeId = request.json["homeId"]
 			newHome.userId = request.json["userId"]
 			newHome.address = request.json["address"]
 			newHome.headline = request.json["headline"]
