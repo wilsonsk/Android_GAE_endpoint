@@ -73,8 +73,18 @@ class Home(Resource):
 		
 	
 		else:
-			return "Patch Error: no user id"
+			return "Patch Error: home could not be found"
 
 	def delete(self):
 		home = HomeModel.query(HomeModel.homeId == request.args.get("homeId")).fetch()
-		return 'Hello DELETE home'
+		if home:
+			home_dict = {'Home': []}
+			for home in home:
+				key = home.key.urlsafe()
+			h = getObj(key)
+	
+			h.key.delete()
+
+			return 'Hello DELETE home'
+		else:
+			return "Delete Error: home could not be found"
