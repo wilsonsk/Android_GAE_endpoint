@@ -30,17 +30,51 @@ class Home(Resource):
 		
 			return json.dumps(home_dicts)
 
-	def post(self):
+	def post(self):	
+		newHome = HomeModel()
+		newHome.homeId = request.json["homeId"]
+		newHome.userId = request.json["userId"]
+		newHome.address = request.json["address"]
+		newHome.headline = request.json["headline"]
+		newHome.squareFeet = int(request.json["squareFeet"])
+		newHome.price = int(request.json["price"])
+		newHome.put()
+		return "Data was POSTed"
+
 	
-			newHome = HomeModel()
-			newHome.homeId = request.json["homeId"]
-			newHome.userId = request.json["userId"]
-			newHome.address = request.json["address"]
-			newHome.headline = request.json["headline"]
-			newHome.squareFeet = int(request.json["squareFeet"])
-			newHome.price = int(request.json["price"])
-			newHome.put()
-			return "Data was POSTed"
+	def patch(self):	
+		home = HomeModel.query(HomeModel.homeId == request.args.get("homeId")).fetch()
+
+		if home:
+			home_dict = {'Home': []}
+			for home in home:
+				key = home.key.urlsafe()
+			h = getObj(key)
+			return request.json["squareFeet"]	
+#			temp = request.json["address"]				
+#			if temp is not "": 
+#				h.address = request.json["address"]
+#	
+#			temp = request.json["headline"]				
+#			if temp is not "": 
+#				h.headline = request.json["headline"]
+#
+#			temp = request.json["squareFeet"]				
+#			if temp is not "": 
+#				h.squareFeet = int(request.json["squareFeet"])
+#
+#			temp = request.json["price"]				
+#			if temp is not "": 
+#				h.price = int(request.json["price"])
+#
+#			h.put()
+#			return "PATCH SUCCESS"
+
+		
+	
+		else:
+			return "Patch Error: no user id"
 
 	def delete(self):
+		home = HomeModel.query(HomeModel.homeId == request.args.get("homeId")).fetch()
 		return 'Hello DELETE home'
