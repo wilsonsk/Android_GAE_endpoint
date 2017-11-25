@@ -11,10 +11,10 @@ class Home(Resource):
 	def get(self):
 		home = HomeModel.query(HomeModel.homeId == request.args.get("homeId")).fetch()
 		if home:				
-			home_dict = {'Home': []}
+			home_dict = {'Homes': []}
 			for home in home:
 				home_data = home.to_dict()
-				home_dict['Home'].append(home_data)	
+				home_dict['Homes'].append(home_data)	
 
 			return json.dumps(home_dict)
 		
