@@ -9,18 +9,6 @@ from home import HomeModel
 
 class Home(Resource):
 	def get(self):
-		homes = HomeModel.query(HomeModel.userId == request.args.get("userId")).fetch()
-		home_dicts = {'Homes':[]}
-		for home in homes:
-			id = home.key.urlsafe()
-			home_data = home.to_dict()
-			home_data['self'] = '/homes/' + id 
-			home_data['id'] = id
-			home_dicts['Homes'].append(home_data)
-
-		return json.dumps(home_dicts)
-
-	def post(self):
 		home = HomeModel.query(HomeModel.homeId == request.args.get("homeId")).fetch()
 		if home:				
 			home_dict = {'Home': []}
@@ -31,6 +19,19 @@ class Home(Resource):
 			return json.dumps(home_dict)
 		
 		else:
+			homes = HomeModel.query(HomeModel.userId == request.args.get("userId")).fetch()
+			home_dicts = {'Homes':[]}
+			for home in homes:
+				id = home.key.urlsafe()
+				home_data = home.to_dict()
+				home_data['self'] = '/homes/' + id 
+				home_data['id'] = id
+				home_dicts['Homes'].append(home_data)
+		
+			return json.dumps(home_dicts)
+
+	def post(self):
+	
 			newHome = HomeModel()
 			newHome.homeId = request.json["homeId"]
 			newHome.userId = request.json["userId"]
