@@ -50,25 +50,25 @@ class Home(Resource):
 			for home in home:
 				key = home.key.urlsafe()
 			h = getObj(key)
-			return request.json["squareFeet"]	
-#			temp = request.json["address"]				
-#			if temp is not "": 
-#				h.address = request.json["address"]
-#	
-#			temp = request.json["headline"]				
-#			if temp is not "": 
-#				h.headline = request.json["headline"]
-#
-#			temp = request.json["squareFeet"]				
-#			if temp is not "": 
-#				h.squareFeet = int(request.json["squareFeet"])
-#
-#			temp = request.json["price"]				
-#			if temp is not "": 
-#				h.price = int(request.json["price"])
-#
-#			h.put()
-#			return "PATCH SUCCESS"
+
+			temp = request.json["address"]				
+			if temp != "": 
+				h.address = request.json["address"]
+	
+			temp = request.json["headline"]				
+			if temp != "": 
+				h.headline = request.json["headline"]
+
+			temp = request.json["squareFeet"]				
+			if temp != "": 
+				h.squareFeet = int(request.json["squareFeet"])
+
+			temp = request.json["price"]				
+			if temp != "": 
+				h.price = int(request.json["price"])
+
+			h.put()
+			return "PATCH SUCCESS"
 
 		
 	
