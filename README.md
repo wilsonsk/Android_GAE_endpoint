@@ -4,24 +4,32 @@
 ---
 ## Routes
 
+---
 ### GET
 #### GET https://android-endpoint.appspot.com/home/{userId}
 ###### Makes a GET request for all homes for user with `userId`
 
 #### GET https://android-endpoint.appspot.com/home/{userId}/{homeId}
 ###### Makes a GET request for home with `homeId` for user with `userId`
+---
 
+---
 ### POST
 #### POST https://android-endpoint.appspot.com/home/{userId}
 ###### Makes a POST request for user with `userId`
+---
 
+---
 ### PATCH
 #### PATCH https://android-endpoint.appspot.com/home/{userId}/{homeId}
 ###### Makes a PATCH request for home with `homeId` for user with `userId`
+---
 
+---
 ### DELETE
 #### DELET https://android-endpoint.appspot.com/home/{userId}/{homeId}
 ###### Makes a DELETE request for home with `homeId` for user with `userId`
+---
 ---
 
 ## To Run Locally 
