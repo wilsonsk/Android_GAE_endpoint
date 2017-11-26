@@ -1,5 +1,17 @@
-## Android_GAE_endpoint
-## Run 
+# Android_GAE_endpoint
+
+---
+## Routes
+### GET
+
+### POST
+
+### PATCH
+
+### DELETE
+---
+
+## To Run Locally 
 1. Install the [App Engine Python SDK](https://developers.google.com/appengine/downloads).
 You'll need python 2.7 and [pip 1.4 or later](http://www.pip-installer.org/en/latest/installing.html) installed too.
 

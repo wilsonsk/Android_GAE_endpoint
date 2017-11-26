@@ -39,7 +39,7 @@ class Home(Resource):
 		newHome.squareFeet = int(request.json["squareFeet"])
 		newHome.price = int(request.json["price"])
 		newHome.put()
-		return "Data was POSTed"
+		return 'New home created. Refresh and log back in to see changes.'
 
 	
 	def patch(self):	
@@ -68,7 +68,7 @@ class Home(Resource):
 				h.price = int(request.json["price"])
 
 			h.put()
-			return "PATCH SUCCESS"
+			return 'Home patched. Refresh and log back in to see changes.'
 
 		
 	
@@ -76,8 +76,9 @@ class Home(Resource):
 			return "Patch Error: home could not be found"
 
 	def delete(self):
-		home = HomeModel.query(HomeModel.homeId == request.args.get("homeId")).fetch()
+		home = request.args.get("homeId")
 		if home:
+			home = HomeModel.query(HomeModel.homeId == request.args.get("homeId")).fetch()
 			home_dict = {'Home': []}
 			for home in home:
 				key = home.key.urlsafe()
@@ -85,6 +86,4 @@ class Home(Resource):
 	
 			h.key.delete()
 
-			return 'Hello DELETE home'
-		else:
-			return "Delete Error: home could not be found"
+			return 'Home removed. Refresh and log back in to see changes.'
