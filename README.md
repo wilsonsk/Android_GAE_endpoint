@@ -1,5 +1,5 @@
 # Android_GAE_endpoint
-###### [REST_API](https://android-endpoint.appspot.com/)
+### [REST_API](https://android-endpoint.appspot.com/home)
 
 ---
 ## Routes
