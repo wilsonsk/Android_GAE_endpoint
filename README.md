@@ -6,28 +6,28 @@
 
 ---
 ### GET
-#### GET https://android-endpoint.appspot.com/home/{userId}
+#### GET [https://android-endpoint.appspot.com/home/{userId}](https://android-endpoint.appspot.com/home/upC7TrdyaibVs9TKACM1B6GeWBL2/)
 ###### Makes a GET request for all homes for user with `userId`
 
-#### GET https://android-endpoint.appspot.com/home/{userId}/{homeId}
+#### GET [https://android-endpoint.appspot.com/home/{userId}/{homeId}](https://android-endpoint.appspot.com/home/upC7TrdyaibVs9TKACM1B6GeWBL2/kluzlh9fa)
 ###### Makes a GET request for home with `homeId` for user with `userId`
 ---
 
 ---
 ### POST
-#### POST https://android-endpoint.appspot.com/home/{userId}
+#### POST [https://android-endpoint.appspot.com/home/{userId}](https://android-endpoint.appspot.com/home/upC7TrdyaibVs9TKACM1B6GeWBL2)
 ###### Makes a POST request for user with `userId`
 ---
 
 ---
 ### PATCH
-#### PATCH https://android-endpoint.appspot.com/home/{userId}/{homeId}
+#### PATCH [https://android-endpoint.appspot.com/home/{userId}/{homeId}](https://android-endpoint.appspot.com/home/upC7TrdyaibVs9TKACM1B6GeWBL2)
 ###### Makes a PATCH request for home with `homeId` for user with `userId`
 ---
 
 ---
 ### DELETE
-#### DELET https://android-endpoint.appspot.com/home/{userId}/{homeId}
+#### DELETE [https://android-endpoint.appspot.com/home/{userId}/{homeId}](https://android-endpoint.appspot.com/home/upC7TrdyaibVs9TKACM1B6GeWBL2)
 ###### Makes a DELETE request for home with `homeId` for user with `userId`
 ---
 ---
