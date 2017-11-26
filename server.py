@@ -24,7 +24,7 @@ def landing():
 """ REST API ROUTERS """
 
 api.add_resource(Houses, '/houses')
-api.add_resource(Home, '/home')
+api.add_resource(Home, '/home', '/home/<string:userId>', '/home/<string:userId>/<string:homeId>')
 
 if __name__ == "__main__":
 	app.run(debug=True)

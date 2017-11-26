@@ -8,8 +8,8 @@ from utils import jsonDumps, getObj
 from home import HomeModel
 
 class Home(Resource):
-	def get(self):
-		home = HomeModel.query(HomeModel.homeId == request.args.get("homeId")).fetch()
+	def get(self, userId=None, homeId=None):
+		home = HomeModel.query(HomeModel.homeId == homeId).fetch()
 		if home:				
 			home_dict = {'Homes': []}
 			for home in home:
@@ -17,9 +17,9 @@ class Home(Resource):
 				home_dict['Homes'].append(home_data)	
 
 			return json.dumps(home_dict)
-		
+       	
 		else:
-			homes = HomeModel.query(HomeModel.userId == request.args.get("userId")).fetch()
+			homes = HomeModel.query(HomeModel.userId == userId).fetch()
 			home_dicts = {'Homes':[]}
 			for home in homes:
 				id = home.key.urlsafe()
@@ -30,10 +30,10 @@ class Home(Resource):
 		
 			return json.dumps(home_dicts)
 
-	def post(self):	
+	def post(self, userId=None, homeId=None):	
 		newHome = HomeModel()
 		newHome.homeId = request.json["homeId"]
-		newHome.userId = request.json["userId"]
+		newHome.userId = userId
 		newHome.address = request.json["address"]
 		newHome.headline = request.json["headline"]
 		newHome.squareFeet = int(request.json["squareFeet"])
@@ -42,8 +42,8 @@ class Home(Resource):
 		return 'New home created. Refresh and log back in to see changes.'
 
 	
-	def patch(self):	
-		home = HomeModel.query(HomeModel.homeId == request.args.get("homeId")).fetch()
+	def patch(self, userId=None, homeId=None):	
+		home = HomeModel.query(HomeModel.homeId == homeId).fetch()
 
 		if home:
 			home_dict = {'Home': []}
@@ -75,10 +75,10 @@ class Home(Resource):
 		else:
 			return "Patch Error: home could not be found"
 
-	def delete(self):
-		home = request.args.get("homeId")
+	def delete(self, userId=None, homeId=None):
+		home = homeId
 		if home:
-			home = HomeModel.query(HomeModel.homeId == request.args.get("homeId")).fetch()
+			home = HomeModel.query(HomeModel.homeId == homeId).fetch()
 			home_dict = {'Home': []}
 			for home in home:
 				key = home.key.urlsafe()
