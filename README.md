@@ -6,7 +6,7 @@
 
 ---
 ### GET
-#### GET [https://android-endpoint.appspot.com/home/{userId}](https://android-endpoint.appspot.com/home/upC7TrdyaibVs9TKACM1B6GeWBL2/)
+#### GET [https://android-endpoint.appspot.com/home/{userId}](https://android-endpoint.appspot.com/home/upC7TrdyaibVs9TKACM1B6GeWBL2)
 ###### Makes a GET request for all homes for user with `userId`
 
 #### GET [https://android-endpoint.appspot.com/home/{userId}/{homeId}](https://android-endpoint.appspot.com/home/upC7TrdyaibVs9TKACM1B6GeWBL2/kluzlh9fa)
